@@ -1,0 +1,22 @@
+{
+  "name": "jimu",
+  "version": "1.0.0",
+  "description": "",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mochang-tao/jimu.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mochang-tao/jimu/issues"
+  },
+  "homepage": "https://github.com/mochang-tao/jimu#readme",
+  "dependencies": {
+    "firstui-uni": "^1.8.0"
+  }
+}
