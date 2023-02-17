@@ -38,7 +38,7 @@ if (uni.restoreGlobal) {
     }
     return target;
   };
-  const _sfc_main$3 = {
+  const _sfc_main$4 = {
     name: "fui-input",
     emits: ["input", "update:modelValue", "focus", "blur", "confirm", "click", "keyboardheightchange"],
     props: {
@@ -378,7 +378,7 @@ if (uni.restoreGlobal) {
       }
     }
   };
-  function _sfc_render$1(_ctx, _cache, $props, $setup, $data, $options) {
+  function _sfc_render$2(_ctx, _cache, $props, $setup, $data, $options) {
     return vue.openBlock(), vue.createElementBlock("view", {
       class: vue.normalizeClass({ "fui-input__border": $props.inputBorder, "fui-radius__fillet": $props.isFillet }),
       style: vue.normalizeStyle($options.getStyles),
@@ -460,7 +460,7 @@ if (uni.restoreGlobal) {
       ], 6)
     ], 6);
   }
-  const __easycom_0 = /* @__PURE__ */ _export_sfc(_sfc_main$3, [["render", _sfc_render$1], ["__scopeId", "data-v-a23503dd"], ["__file", "D:/DeskTops/uniapp/jimu/node_modules/firstui-uni/firstui/fui-input/fui-input.vue"]]);
+  const __easycom_0 = /* @__PURE__ */ _export_sfc(_sfc_main$4, [["render", _sfc_render$2], ["__scopeId", "data-v-a23503dd"], ["__file", "D:/DeskTops/uniapp/jimu/node_modules/firstui-uni/firstui/fui-input/fui-input.vue"]]);
   function formatAppLog(type, filename, ...args) {
     if (uni.__log__) {
       uni.__log__(type, filename, ...args);
@@ -471,26 +471,337 @@ if (uni.restoreGlobal) {
   function resolveEasycom(component, easycom) {
     return shared.isString(component) ? easycom : component;
   }
+  const _sfc_main$3 = {
+    name: "fui-button",
+    emits: ["click", "getuserinfo", "contact", "getphonenumber", "error", "opensetting"],
+    props: {
+      type: {
+        type: String,
+        default: "primary"
+      },
+      background: {
+        type: String,
+        default: ""
+      },
+      text: {
+        type: String,
+        default: ""
+      },
+      color: {
+        type: String,
+        default: ""
+      },
+      disabledBackground: {
+        type: String,
+        default: ""
+      },
+      disabledColor: {
+        type: String,
+        default: ""
+      },
+      borderWidth: {
+        type: String,
+        default: "1px"
+      },
+      borderColor: {
+        type: String,
+        default: ""
+      },
+      width: {
+        type: String,
+        default: "100%"
+      },
+      height: {
+        type: String,
+        default: ""
+      },
+      size: {
+        type: [Number, String],
+        default: 0
+      },
+      bold: {
+        type: Boolean,
+        default: false
+      },
+      margin: {
+        type: Array,
+        default() {
+          return ["0", "0"];
+        }
+      },
+      radius: {
+        type: String,
+        default: ""
+      },
+      plain: {
+        type: Boolean,
+        default: false
+      },
+      disabled: {
+        type: Boolean,
+        default: false
+      },
+      loading: {
+        type: Boolean,
+        default: false
+      },
+      formType: {
+        type: String,
+        default: ""
+      },
+      openType: {
+        type: String,
+        default: ""
+      },
+      scope: {
+        type: String,
+        default: ""
+      },
+      index: {
+        type: [Number, String],
+        default: 0
+      }
+    },
+    computed: {
+      getTypeColor() {
+        return "";
+      },
+      getBackground() {
+        let color = this.getTypeColor;
+        if (this.disabled || this.plain) {
+          color = "transparent";
+        }
+        if (!this.disabled && !this.plain && this.background) {
+          color = this.background;
+        }
+        return color;
+      },
+      getColor() {
+        let color = "#fff";
+        if (this.color) {
+          color = this.disabled && this.disabledBackground ? this.disabledColor : this.color;
+        } else {
+          if (this.disabled && this.disabledBackground) {
+            color = this.disabledColor || "#FFFFFF";
+          } else {
+            color = this.type === "gray" ? "#465CFF" : "#FFFFFF";
+          }
+        }
+        return color;
+      },
+      getSize() {
+        const size = uni && uni.$fui && uni.$fui.fuiButton && uni.$fui.fuiButton.size || 32;
+        return `${this.size || size}rpx`;
+      },
+      getHeight() {
+        const height = uni && uni.$fui && uni.$fui.fuiButton && uni.$fui.fuiButton.height || "96rpx";
+        return this.height || height;
+      },
+      getBorderRadius() {
+        let radius = uni && uni.$fui && uni.$fui.fuiButton && uni.$fui.fuiButton.radius || "16rpx";
+        radius = this.radius || radius || "0";
+        if (~radius.indexOf("rpx")) {
+          radius = Number(radius.replace("rpx", "")) * 2 + "rpx";
+        } else if (~radius.indexOf("px")) {
+          radius = Number(radius.replace("px", "")) * 2 + "px";
+        } else if (~radius.indexOf("%")) {
+          radius = Number(radius.replace("%", "")) * 2 + "%";
+        }
+        return radius;
+      },
+      getRadius() {
+        const radius = uni && uni.$fui && uni.$fui.fuiButton && uni.$fui.fuiButton.radius || "16rpx";
+        return this.radius || radius;
+      }
+    },
+    data() {
+      let isNvue = false;
+      return {
+        isNvue,
+        time: 0,
+        trigger: false,
+        pc: false
+      };
+    },
+    created() {
+    },
+    methods: {
+      handleStart(e) {
+        if (this.disabled)
+          return;
+        this.trigger = false;
+        if (new Date().getTime() - this.time <= 150)
+          return;
+        this.trigger = true;
+        this.time = new Date().getTime();
+      },
+      handleClick() {
+        if (this.disabled || !this.trigger)
+          return;
+        this.time = 0;
+      },
+      handleTap() {
+        if (this.disabled)
+          return;
+        this.$emit("click", {
+          index: Number(this.index)
+        });
+      },
+      handleEnd(e) {
+        if (this.disabled)
+          return;
+        setTimeout(() => {
+          this.time = 0;
+        }, 150);
+      },
+      bindgetuserinfo({
+        detail = {}
+      } = {}) {
+        this.$emit("getuserinfo", detail);
+      },
+      bindcontact({
+        detail = {}
+      } = {}) {
+        this.$emit("contact", detail);
+      },
+      bindgetphonenumber({
+        detail = {}
+      } = {}) {
+        this.$emit("getphonenumber", detail);
+      },
+      binderror({
+        detail = {}
+      } = {}) {
+        this.$emit("error", detail);
+      },
+      bindopensetting({
+        detail = {}
+      } = {}) {
+        this.$emit("opensetting", detail);
+      }
+    }
+  };
+  function _sfc_render$1(_ctx, _cache, $props, $setup, $data, $options) {
+    return vue.openBlock(), vue.createElementBlock("view", {
+      class: vue.normalizeClass(["fui-button__wrap", [!$props.width || $props.width === "100%" || $props.width === true ? "fui-button__flex-1" : "", $props.disabled && !$props.disabledBackground ? "fui-button__opacity" : ""]]),
+      style: vue.normalizeStyle({ width: $props.width, height: $options.getHeight, marginTop: $props.margin[0] || 0, marginRight: $props.margin[1] || 0, marginBottom: $props.margin[2] || $props.margin[0] || 0, marginLeft: $props.margin[3] || $props.margin[1] || 0, borderRadius: $options.getRadius, background: $options.getBackground }),
+      onTouchstart: _cache[6] || (_cache[6] = (...args) => $options.handleStart && $options.handleStart(...args)),
+      onTouchend: _cache[7] || (_cache[7] = (...args) => $options.handleClick && $options.handleClick(...args)),
+      onTouchcancel: _cache[8] || (_cache[8] = (...args) => $options.handleEnd && $options.handleEnd(...args))
+    }, [
+      vue.createElementVNode("button", {
+        class: vue.normalizeClass(["fui-button", [
+          $props.bold ? "fui-text__bold" : "",
+          $data.time && ($props.plain || $props.type === "link") ? "fui-button__opacity" : "",
+          !$props.background && !$props.disabledBackground && !$props.plain ? "fui-button__" + $props.type : "",
+          !$props.width || $props.width === "100%" || $props.width === true ? "fui-button__flex-1" : "",
+          $data.time && !$props.plain && $props.type !== "link" ? "fui-button__active" : "",
+          $data.pc && !$props.disabled ? $props.plain || $props.type === "link" ? "fui-button__opacity-pc" : "fui-button__active-pc" : ""
+        ]]),
+        style: vue.normalizeStyle({
+          width: $props.width,
+          height: $options.getHeight,
+          lineHeight: $options.getHeight,
+          background: $props.disabled ? $props.disabledBackground || $options.getTypeColor : $props.plain ? "transparent" : $options.getBackground,
+          borderWidth: !$props.borderColor || !$data.isNvue ? "0" : $props.borderWidth,
+          borderColor: $props.borderColor ? $props.borderColor : $props.disabled && $props.disabledBackground ? $props.disabledBackground : $props.background || "transparent",
+          borderRadius: $options.getRadius,
+          fontSize: $options.getSize,
+          color: $options.getColor
+        }),
+        loading: $props.loading,
+        "form-type": $props.formType,
+        "open-type": $props.openType,
+        onGetuserinfo: _cache[0] || (_cache[0] = (...args) => $options.bindgetuserinfo && $options.bindgetuserinfo(...args)),
+        onGetphonenumber: _cache[1] || (_cache[1] = (...args) => $options.bindgetphonenumber && $options.bindgetphonenumber(...args)),
+        onContact: _cache[2] || (_cache[2] = (...args) => $options.bindcontact && $options.bindcontact(...args)),
+        onError: _cache[3] || (_cache[3] = (...args) => $options.binderror && $options.binderror(...args)),
+        onOpensetting: _cache[4] || (_cache[4] = (...args) => $options.bindopensetting && $options.bindopensetting(...args)),
+        disabled: $props.disabled,
+        scope: $props.scope,
+        onClick: _cache[5] || (_cache[5] = vue.withModifiers((...args) => $options.handleTap && $options.handleTap(...args), ["stop"]))
+      }, [
+        $props.text ? (vue.openBlock(), vue.createElementBlock("text", {
+          key: 0,
+          class: vue.normalizeClass(["fui-button__text", { "fui-btn__gray-color": !$props.background && !$props.disabledBackground && !$props.plain && $props.type === "gray" && $props.color === "#fff", "fui-text__bold": $props.bold }]),
+          style: vue.normalizeStyle({ fontSize: $options.getSize, lineHeight: $options.getSize, color: $props.color ? $props.disabled && $props.disabledBackground ? $props.disabledColor : $props.color : $props.type === "gray" ? "#465CFF" : "#FFFFFF" })
+        }, vue.toDisplayString($props.text), 7)) : vue.createCommentVNode("v-if", true),
+        vue.renderSlot(_ctx.$slots, "default", {}, void 0, true)
+      ], 46, ["loading", "form-type", "open-type", "disabled", "scope"]),
+      $props.borderColor ? (vue.openBlock(), vue.createElementBlock("view", {
+        key: 0,
+        class: vue.normalizeClass(["fui-button__thin-border", [$data.time && ($props.plain || $props.type === "link") && !$props.disabled ? "fui-button__opacity" : "", $props.disabled && !$props.disabledBackground ? "fui-button__opacity" : ""]]),
+        style: vue.normalizeStyle({ borderWidth: $props.borderWidth, borderColor: $props.borderColor ? $props.borderColor : $props.disabled && $props.disabledBackground ? $props.disabledBackground : $props.background || "transparent", borderRadius: $options.getBorderRadius })
+      }, null, 6)) : vue.createCommentVNode("v-if", true)
+    ], 38);
+  }
+  const __easycom_1 = /* @__PURE__ */ _export_sfc(_sfc_main$3, [["render", _sfc_render$1], ["__scopeId", "data-v-95a9a26f"], ["__file", "D:/DeskTops/uniapp/jimu/node_modules/firstui-uni/firstui/fui-button/fui-button.vue"]]);
   const _sfc_main$2 = {
     __name: "index",
     setup(__props) {
-      const name = vue.ref("\u6211\u662F\u53D8\u91CF");
+      const form = vue.reactive({
+        accountNumber: "",
+        passwrod: ""
+      });
+      function onLogin() {
+        if (!form.accountNumber && !form.passwrod) {
+          return;
+        }
+      }
       return (_ctx, _cache) => {
         const _component_fui_input = resolveEasycom(vue.resolveDynamicComponent("fui-input"), __easycom_0);
+        const _component_fui_button = resolveEasycom(vue.resolveDynamicComponent("fui-button"), __easycom_1);
         return vue.openBlock(), vue.createElementBlock("div", { class: "login" }, [
           vue.createElementVNode("div", { class: "form" }, [
-            vue.createElementVNode("div", { class: "title" }, " \u767B\u5F55 "),
-            vue.createElementVNode("div", null, [
+            vue.createElementVNode("div", { class: "box" }, [
               vue.createVNode(_component_fui_input, {
-                label: "\u6807\u9898",
-                modelValue: name.value,
-                "onUpdate:modelValue": _cache[0] || (_cache[0] = ($event) => name.value = $event),
-                bottomLeft: 0,
-                borderTop: "",
-                placeholder: "\u8BF7\u8F93\u5165\u6587\u672C"
-              }, null, 8, ["modelValue"])
+                placeholder: "\u7528\u6237\u540D/\u8D26\u53F7/\u624B\u673A\u53F7",
+                backgroundColor: "#ffffff00",
+                modelValue: form.accountNumber,
+                "onUpdate:modelValue": _cache[0] || (_cache[0] = ($event) => form.accountNumber = $event)
+              }, {
+                left: vue.withCtx(() => [
+                  vue.createElementVNode("image", {
+                    class: "icon",
+                    src: "/static/svg/login_user.svg",
+                    mode: ""
+                  })
+                ]),
+                _: 1
+              }, 8, ["modelValue"])
             ]),
-            vue.createElementVNode("div", null, vue.toDisplayString(name.value), 1)
+            vue.createElementVNode("div", { class: "box" }, [
+              vue.createVNode(_component_fui_input, {
+                placeholder: "\u8BF7\u8F93\u5165\u60A8\u7684\u5BC6\u7801",
+                backgroundColor: "#ffffff00",
+                modelValue: form.passwrod,
+                "onUpdate:modelValue": _cache[1] || (_cache[1] = ($event) => form.passwrod = $event)
+              }, {
+                left: vue.withCtx(() => [
+                  vue.createElementVNode("image", {
+                    class: "icon",
+                    src: "/static/svg/login_password.svg",
+                    mode: ""
+                  })
+                ]),
+                _: 1
+              }, 8, ["modelValue"])
+            ]),
+            vue.createElementVNode("div", { class: "btn" }, [
+              vue.createVNode(_component_fui_button, {
+                background: "#a05dbc91",
+                onClick: onLogin
+              }, {
+                default: vue.withCtx(() => [
+                  vue.createTextVNode("\u767B\u5F55")
+                ]),
+                _: 1
+              })
+            ]),
+            vue.createElementVNode("div", { class: "bottom" }, [
+              vue.createElementVNode("div", { class: "left" }, "\u5FD8\u8BB0\u5BC6\u7801"),
+              vue.createElementVNode("div", { class: "right" }, "\u6CE8\u518C\u8D26\u53F7")
+            ])
           ])
         ]);
       };

@@ -1,3 +1,8 @@
+<template>
+	<div>
+		444488
+	</div>
+</template>
 <script>
 	export default {
 		onLaunch: function() {
