@@ -1,15 +1,27 @@
 {
-	"pages": [ //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
-		{
-			"path": "pages/login/index",
-			"style": {
-				"navigationBarTitleText": "登录"
-			}
-		},
+	"pages": [ //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages\
+	{
+		"path": "pages/login/index",
+		"style": {
+			"navigationBarTitleText": "登录"
+		}
+	},
+	 {
+		"path": "pages/homePage/index",
+		"style": {
+			"navigationBarTitleText": "首页"
+		}
+	 },
 		{
 			"path": "pages/index/index",
 			"style": {
 				"navigationBarTitleText": "uni-app"
+			}
+		},
+		{
+			"path": "pages/my/index",
+			"style": {
+				"navigationBarTitleText": "我的"
 			}
 		}
 	],
@@ -25,5 +37,22 @@
 			"custom": {
 				"fui-(.*)": "firstui-uni/firstui/fui-$1/fui-$1.vue"
 			}
-		}
+	},
+	 "tabBar": {
+		 "color": "#cccc",
+		 "selectedColor": "#F34E79",
+		 "borderStyle": "black",
+	    "list": [
+				{
+				  "pagePath": "pages/homePage/index",
+				  "text": "首页",
+					"iconPath":"static/svg/tabBar_homePage.svg"
+				},
+				{
+				  "pagePath": "pages/my/index",
+				  "text": "我的",
+					"iconPath":"static/svg/tabBar_my.svg"
+				}
+	    ]
+	  }
 }

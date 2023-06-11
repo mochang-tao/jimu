@@ -38,7 +38,51 @@ if (uni.restoreGlobal) {
     }
     return target;
   };
-  const _sfc_main$4 = {
+  const _sfc_main$8 = {};
+  function _sfc_render$6(_ctx, _cache) {
+    return vue.openBlock(), vue.createElementBlock("div", { class: "body" }, [
+      vue.createElementVNode("div", { class: "container" }, [
+        vue.createElementVNode("div", {
+          class: "square",
+          style: { "--d": "1" }
+        }),
+        vue.createElementVNode("div", {
+          class: "square",
+          style: { "--d": "2" }
+        }),
+        vue.createElementVNode("div", {
+          class: "square",
+          style: { "--d": "3" }
+        }),
+        vue.createElementVNode("div", {
+          class: "square",
+          style: { "--d": "4" }
+        }),
+        vue.createElementVNode("div", {
+          class: "square",
+          style: { "--d": "5" }
+        }),
+        vue.createElementVNode("div", {
+          class: "square",
+          style: { "--d": "6" }
+        }),
+        vue.createElementVNode("div", {
+          class: "square",
+          style: { "--d": "7" }
+        }),
+        vue.createElementVNode("div", {
+          class: "square",
+          style: { "--d": "8" }
+        }),
+        vue.createElementVNode("div", {
+          class: "square",
+          style: { "--d": "9" }
+        })
+      ])
+    ]);
+  }
+  const PagesHomePageIndex = /* @__PURE__ */ _export_sfc(_sfc_main$8, [["render", _sfc_render$6], ["__file", "D:/DeskTops/uniapp/jimu/pages/homePage/index.vue"]]);
+  const _sfc_main$7 = {
     name: "fui-input",
     emits: ["input", "update:modelValue", "focus", "blur", "confirm", "click", "keyboardheightchange"],
     props: {
@@ -378,7 +422,7 @@ if (uni.restoreGlobal) {
       }
     }
   };
-  function _sfc_render$2(_ctx, _cache, $props, $setup, $data, $options) {
+  function _sfc_render$5(_ctx, _cache, $props, $setup, $data, $options) {
     return vue.openBlock(), vue.createElementBlock("view", {
       class: vue.normalizeClass({ "fui-input__border": $props.inputBorder, "fui-radius__fillet": $props.isFillet }),
       style: vue.normalizeStyle($options.getStyles),
@@ -460,7 +504,7 @@ if (uni.restoreGlobal) {
       ], 6)
     ], 6);
   }
-  const __easycom_0 = /* @__PURE__ */ _export_sfc(_sfc_main$4, [["render", _sfc_render$2], ["__scopeId", "data-v-a23503dd"], ["__file", "D:/DeskTops/uniapp/jimu/node_modules/firstui-uni/firstui/fui-input/fui-input.vue"]]);
+  const __easycom_0 = /* @__PURE__ */ _export_sfc(_sfc_main$7, [["render", _sfc_render$5], ["__scopeId", "data-v-a23503dd"], ["__file", "D:/DeskTops/uniapp/jimu/node_modules/firstui-uni/firstui/fui-input/fui-input.vue"]]);
   function formatAppLog(type, filename, ...args) {
     if (uni.__log__) {
       uni.__log__(type, filename, ...args);
@@ -471,7 +515,7 @@ if (uni.restoreGlobal) {
   function resolveEasycom(component, easycom) {
     return shared.isString(component) ? easycom : component;
   }
-  const _sfc_main$3 = {
+  const _sfc_main$6 = {
     name: "fui-button",
     emits: ["click", "getuserinfo", "contact", "getphonenumber", "error", "opensetting"],
     props: {
@@ -681,7 +725,7 @@ if (uni.restoreGlobal) {
       }
     }
   };
-  function _sfc_render$1(_ctx, _cache, $props, $setup, $data, $options) {
+  function _sfc_render$4(_ctx, _cache, $props, $setup, $data, $options) {
     return vue.openBlock(), vue.createElementBlock("view", {
       class: vue.normalizeClass(["fui-button__wrap", [!$props.width || $props.width === "100%" || $props.width === true ? "fui-button__flex-1" : "", $props.disabled && !$props.disabledBackground ? "fui-button__opacity" : ""]]),
       style: vue.normalizeStyle({ width: $props.width, height: $options.getHeight, marginTop: $props.margin[0] || 0, marginRight: $props.margin[1] || 0, marginBottom: $props.margin[2] || $props.margin[0] || 0, marginLeft: $props.margin[3] || $props.margin[1] || 0, borderRadius: $options.getRadius, background: $options.getBackground }),
@@ -735,80 +779,344 @@ if (uni.restoreGlobal) {
       }, null, 6)) : vue.createCommentVNode("v-if", true)
     ], 38);
   }
-  const __easycom_1 = /* @__PURE__ */ _export_sfc(_sfc_main$3, [["render", _sfc_render$1], ["__scopeId", "data-v-95a9a26f"], ["__file", "D:/DeskTops/uniapp/jimu/node_modules/firstui-uni/firstui/fui-button/fui-button.vue"]]);
-  const _sfc_main$2 = {
-    __name: "index",
-    setup(__props) {
-      const form = vue.reactive({
-        accountNumber: "",
-        passwrod: ""
-      });
-      function onLogin() {
-        if (!form.accountNumber && !form.passwrod) {
-          return;
+  const __easycom_1 = /* @__PURE__ */ _export_sfc(_sfc_main$6, [["render", _sfc_render$4], ["__scopeId", "data-v-95a9a26f"], ["__file", "D:/DeskTops/uniapp/jimu/node_modules/firstui-uni/firstui/fui-button/fui-button.vue"]]);
+  const _sfc_main$5 = {
+    name: "fui-toast",
+    props: {
+      padding: {
+        type: Array,
+        default() {
+          return ["32rpx", "32rpx"];
         }
+      },
+      background: {
+        type: String,
+        default: "rgba(0,0,0,.6)"
+      },
+      width: {
+        type: [Number, String],
+        default: 64
+      },
+      size: {
+        type: [Number, String],
+        default: 30
+      },
+      color: {
+        type: String,
+        default: "#fff"
+      },
+      zIndex: {
+        type: Number,
+        default: 1001
+      }
+    },
+    data() {
+      let isNvue = false;
+      return {
+        timer: null,
+        visible: false,
+        src: "",
+        text: "",
+        isNvue
+      };
+    },
+    beforeUnmount() {
+      clearTimeout(this.timer);
+      this.timer = null;
+    },
+    methods: {
+      show: function(options) {
+        clearTimeout(this.timer);
+        let {
+          duration = 2e3,
+          src = "",
+          text = ""
+        } = options;
+        this.text = text;
+        this.src = src;
+        this.$nextTick(() => {
+          setTimeout(() => {
+            this.visible = true;
+            this.timer = setTimeout(() => {
+              this.visible = false;
+              clearTimeout(this.timer);
+              this.timer = null;
+            }, duration);
+          }, 50);
+        });
+      }
+    }
+  };
+  function _sfc_render$3(_ctx, _cache, $props, $setup, $data, $options) {
+    return $data.visible || !$data.isNvue ? (vue.openBlock(), vue.createElementBlock("view", {
+      key: 0,
+      class: vue.normalizeClass(["fui-toast__wrap", { "fui-toast__show": $data.visible }]),
+      ref: "fui_toast_ani"
+    }, [
+      vue.createElementVNode("view", {
+        class: "fui-toast__inner",
+        style: vue.normalizeStyle({ paddingTop: $props.padding[0] || 0, paddingRight: $props.padding[1] || 0, paddingBottom: $props.padding[2] || $props.padding[0] || 0, paddingLeft: $props.padding[3] || $props.padding[1] || 0, background: $props.background, zIndex: $props.zIndex })
+      }, [
+        vue.renderSlot(_ctx.$slots, "default", {}, void 0, true),
+        $data.src ? (vue.openBlock(), vue.createElementBlock("view", {
+          key: 0,
+          class: "fui-toast__icon-box",
+          style: vue.normalizeStyle({ width: $props.width + "rpx", height: $props.width + "rpx" })
+        }, [
+          vue.createElementVNode("image", {
+            class: "fui-toast__icon",
+            src: $data.src,
+            style: vue.normalizeStyle({ width: $props.width + "rpx", height: $props.width + "rpx" })
+          }, null, 12, ["src"])
+        ], 4)) : vue.createCommentVNode("v-if", true),
+        $data.text ? (vue.openBlock(), vue.createElementBlock("text", {
+          key: 1,
+          class: "fui-toast__text",
+          style: vue.normalizeStyle({ fontSize: $props.size + "rpx", color: $props.color })
+        }, vue.toDisplayString($data.text), 5)) : vue.createCommentVNode("v-if", true)
+      ], 4)
+    ], 2)) : vue.createCommentVNode("v-if", true);
+  }
+  const __easycom_2 = /* @__PURE__ */ _export_sfc(_sfc_main$5, [["render", _sfc_render$3], ["__scopeId", "data-v-106a9f91"], ["__file", "D:/DeskTops/uniapp/jimu/node_modules/firstui-uni/firstui/fui-toast/fui-toast.vue"]]);
+  const _sfc_main$4 = {
+    __name: "register",
+    emits: ["close"],
+    setup(__props, { emit: $emit }) {
+      let form = vue.reactive({
+        userName: "",
+        userPhone: "",
+        passWord: "",
+        passWordTwo: ""
+      });
+      function onRegister() {
+        for (let key in form) {
+          if (!form[key]) {
+            return;
+          }
+        }
+        formatAppLog("log", "at pages/login/components/register.vue:59", "ddd");
       }
       return (_ctx, _cache) => {
         const _component_fui_input = resolveEasycom(vue.resolveDynamicComponent("fui-input"), __easycom_0);
         const _component_fui_button = resolveEasycom(vue.resolveDynamicComponent("fui-button"), __easycom_1);
-        return vue.openBlock(), vue.createElementBlock("div", { class: "login" }, [
-          vue.createElementVNode("div", { class: "form" }, [
-            vue.createElementVNode("div", { class: "box" }, [
-              vue.createVNode(_component_fui_input, {
-                placeholder: "\u7528\u6237\u540D/\u8D26\u53F7/\u624B\u673A\u53F7",
-                backgroundColor: "#ffffff00",
-                modelValue: form.accountNumber,
-                "onUpdate:modelValue": _cache[0] || (_cache[0] = ($event) => form.accountNumber = $event)
-              }, {
-                left: vue.withCtx(() => [
-                  vue.createElementVNode("image", {
-                    class: "icon",
-                    src: "/static/svg/login_user.svg",
-                    mode: ""
-                  })
-                ]),
-                _: 1
-              }, 8, ["modelValue"])
-            ]),
-            vue.createElementVNode("div", { class: "box" }, [
-              vue.createVNode(_component_fui_input, {
-                placeholder: "\u8BF7\u8F93\u5165\u60A8\u7684\u5BC6\u7801",
-                backgroundColor: "#ffffff00",
-                modelValue: form.passwrod,
-                "onUpdate:modelValue": _cache[1] || (_cache[1] = ($event) => form.passwrod = $event)
-              }, {
-                left: vue.withCtx(() => [
-                  vue.createElementVNode("image", {
-                    class: "icon",
-                    src: "/static/svg/login_password.svg",
-                    mode: ""
-                  })
-                ]),
-                _: 1
-              }, 8, ["modelValue"])
-            ]),
-            vue.createElementVNode("div", { class: "btn" }, [
-              vue.createVNode(_component_fui_button, {
-                background: "#a05dbc91",
-                onClick: onLogin
-              }, {
-                default: vue.withCtx(() => [
-                  vue.createTextVNode("\u767B\u5F55")
-                ]),
-                _: 1
-              })
-            ]),
-            vue.createElementVNode("div", { class: "bottom" }, [
-              vue.createElementVNode("div", { class: "left" }, "\u5FD8\u8BB0\u5BC6\u7801"),
-              vue.createElementVNode("div", { class: "right" }, "\u6CE8\u518C\u8D26\u53F7")
-            ])
+        return vue.openBlock(), vue.createElementBlock("div", { class: "forms" }, [
+          vue.createElementVNode("div", { class: "title" }, "\u6CE8\u518C"),
+          vue.createElementVNode("div", { class: "box" }, [
+            vue.createVNode(_component_fui_input, {
+              placeholder: "\u7528\u6237\u540D",
+              backgroundColor: "#ffffff00",
+              modelValue: vue.unref(form).userName,
+              "onUpdate:modelValue": _cache[0] || (_cache[0] = ($event) => vue.unref(form).userName = $event)
+            }, {
+              left: vue.withCtx(() => [
+                vue.createElementVNode("image", {
+                  class: "icon",
+                  src: "/static/svg/login_user.svg",
+                  mode: ""
+                })
+              ]),
+              _: 1
+            }, 8, ["modelValue"])
+          ]),
+          vue.createElementVNode("div", { class: "box" }, [
+            vue.createVNode(_component_fui_input, {
+              placeholder: "\u8BF7\u8F93\u5165\u60A8\u7684\u5BC6\u7801",
+              backgroundColor: "#ffffff00",
+              modelValue: vue.unref(form).passWord,
+              "onUpdate:modelValue": _cache[1] || (_cache[1] = ($event) => vue.unref(form).passWord = $event)
+            }, {
+              left: vue.withCtx(() => [
+                vue.createElementVNode("image", {
+                  class: "icon",
+                  src: "/static/svg/login_password.svg",
+                  mode: ""
+                })
+              ]),
+              _: 1
+            }, 8, ["modelValue"])
+          ]),
+          vue.createElementVNode("div", { class: "box" }, [
+            vue.createVNode(_component_fui_input, {
+              placeholder: "\u8BF7\u518D\u6B21\u8F93\u5165\u5BC6\u7801",
+              backgroundColor: "#ffffff00",
+              modelValue: vue.unref(form).passWordTwo,
+              "onUpdate:modelValue": _cache[2] || (_cache[2] = ($event) => vue.unref(form).passWordTwo = $event)
+            }, {
+              left: vue.withCtx(() => [
+                vue.createElementVNode("image", {
+                  class: "icon",
+                  src: "/static/svg/login_password.svg",
+                  mode: ""
+                })
+              ]),
+              _: 1
+            }, 8, ["modelValue"])
+          ]),
+          vue.createElementVNode("div", { class: "box" }, [
+            vue.createVNode(_component_fui_input, {
+              placeholder: "\u8BF7\u8F93\u5165\u624B\u673A\u8D26\u53F7",
+              backgroundColor: "#ffffff00",
+              modelValue: vue.unref(form).userPhone,
+              "onUpdate:modelValue": _cache[3] || (_cache[3] = ($event) => vue.unref(form).userPhone = $event)
+            }, {
+              left: vue.withCtx(() => [
+                vue.createElementVNode("image", {
+                  class: "icon",
+                  src: "/static/svg/login_phone.svg",
+                  mode: ""
+                })
+              ]),
+              _: 1
+            }, 8, ["modelValue"])
+          ]),
+          vue.createElementVNode("div", { class: "btn" }, [
+            vue.createVNode(_component_fui_button, {
+              background: "#a05dbc91",
+              onClick: onRegister
+            }, {
+              default: vue.withCtx(() => [
+                vue.createTextVNode("\u6CE8\u518C")
+              ]),
+              _: 1
+            })
+          ]),
+          vue.createElementVNode("div", { class: "bottom" }, [
+            vue.createElementVNode("div", {
+              class: "left",
+              onClick: _cache[4] || (_cache[4] = ($event) => vue.unref($emit)("close"))
+            }, "\u8FD4\u56DE\u767B\u5F55")
           ])
         ]);
       };
     }
   };
-  const PagesLoginIndex = /* @__PURE__ */ _export_sfc(_sfc_main$2, [["__scopeId", "data-v-d08ef7d4"], ["__file", "D:/DeskTops/uniapp/jimu/pages/login/index.vue"]]);
-  const _sfc_main$1 = {
+  const register = /* @__PURE__ */ _export_sfc(_sfc_main$4, [["__scopeId", "data-v-857120ea"], ["__file", "D:/DeskTops/uniapp/jimu/pages/login/components/register.vue"]]);
+  const _sfc_main$3 = {
+    __name: "index",
+    setup(__props) {
+      let show = vue.ref(1);
+      let toast = vue.ref(null);
+      const form = vue.reactive({
+        accountNumber: "",
+        passwrod: ""
+      });
+      function onLogin() {
+        if (form.accountNumber && form.passwrod) {
+          if (form.accountNumber == "") {
+            showToast(2);
+            return;
+          }
+          if (form.accountNumber == "yunibobo" && form.passwrod == "mi")
+            showToast(200);
+          uni.switchTab({ url: "../homePage/index" });
+        } else {
+          showToast(1);
+        }
+      }
+      function showToast(type) {
+        let options = {};
+        switch (type) {
+          case 1:
+            options.text = "\u8BF7\u586B\u5199\u7528\u6237\u540D\u548C\u5BC6\u7801";
+            break;
+          case 2:
+            options.text = "\u8BF7\u586B\u5199\u7528\u6237\u540D";
+            break;
+          case 3:
+            options.text = "\u8BF7\u586B\u5199\u5BC6\u7801";
+            break;
+          case 4:
+            options.text = "\u7528\u6237\u540D\u4E0D\u5B58\u5728";
+            break;
+          case 5:
+            options.text = "\u5BC6\u7801\u9519\u8BEF";
+            break;
+          case 6:
+            options.text = "\u5BC6\u7801\u6216\u8005\u7528\u6237\u540D\u9519\u8BEF";
+            break;
+          case 200:
+            options.text = "\u767B\u5F55\u6210\u529F";
+            break;
+        }
+        toast.value.show(options);
+      }
+      return (_ctx, _cache) => {
+        const _component_fui_input = resolveEasycom(vue.resolveDynamicComponent("fui-input"), __easycom_0);
+        const _component_fui_button = resolveEasycom(vue.resolveDynamicComponent("fui-button"), __easycom_1);
+        const _component_fui_toast = resolveEasycom(vue.resolveDynamicComponent("fui-toast"), __easycom_2);
+        return vue.openBlock(), vue.createElementBlock(vue.Fragment, null, [
+          vue.createElementVNode("div", { class: "login" }, [
+            vue.unref(show) == 1 ? (vue.openBlock(), vue.createElementBlock("div", {
+              key: 0,
+              class: "form"
+            }, [
+              vue.createElementVNode("div", { class: "box" }, [
+                vue.createVNode(_component_fui_input, {
+                  placeholder: "\u7528\u6237\u540D/\u8D26\u53F7/\u624B\u673A\u53F7",
+                  backgroundColor: "#ffffff00",
+                  modelValue: form.accountNumber,
+                  "onUpdate:modelValue": _cache[0] || (_cache[0] = ($event) => form.accountNumber = $event)
+                }, {
+                  left: vue.withCtx(() => [
+                    vue.createElementVNode("image", {
+                      class: "icon",
+                      src: "/static/svg/login_user.svg",
+                      mode: ""
+                    })
+                  ]),
+                  _: 1
+                }, 8, ["modelValue"])
+              ]),
+              vue.createElementVNode("div", { class: "box" }, [
+                vue.createVNode(_component_fui_input, {
+                  placeholder: "\u8BF7\u8F93\u5165\u60A8\u7684\u5BC6\u7801",
+                  backgroundColor: "#ffffff00",
+                  modelValue: form.passwrod,
+                  "onUpdate:modelValue": _cache[1] || (_cache[1] = ($event) => form.passwrod = $event)
+                }, {
+                  left: vue.withCtx(() => [
+                    vue.createElementVNode("image", {
+                      class: "icon",
+                      src: "/static/svg/login_password.svg",
+                      mode: ""
+                    })
+                  ]),
+                  _: 1
+                }, 8, ["modelValue"])
+              ]),
+              vue.createElementVNode("div", { class: "btn" }, [
+                vue.createVNode(_component_fui_button, {
+                  background: "#a05dbc91",
+                  onClick: onLogin
+                }, {
+                  default: vue.withCtx(() => [
+                    vue.createTextVNode("\u767B\u5F55")
+                  ]),
+                  _: 1
+                })
+              ]),
+              vue.createElementVNode("div", { class: "bottom" }, [
+                vue.createElementVNode("div", { class: "left" }, "\u5FD8\u8BB0\u5BC6\u7801"),
+                vue.createElementVNode("div", {
+                  class: "right",
+                  onClick: _cache[2] || (_cache[2] = ($event) => vue.isRef(show) ? show.value = 2 : show = 2)
+                }, "\u6CE8\u518C\u8D26\u53F7")
+              ])
+            ])) : (vue.openBlock(), vue.createBlock(register, {
+              key: 1,
+              onClose: _cache[3] || (_cache[3] = ($event) => vue.isRef(show) ? show.value = 1 : show = 1)
+            }))
+          ]),
+          vue.createVNode(_component_fui_toast, {
+            ref_key: "toast",
+            ref: toast
+          }, null, 512)
+        ], 64);
+      };
+    }
+  };
+  const PagesLoginIndex = /* @__PURE__ */ _export_sfc(_sfc_main$3, [["__scopeId", "data-v-d08ef7d4"], ["__file", "D:/DeskTops/uniapp/jimu/pages/login/index.vue"]]);
+  const _sfc_main$2 = {
     data() {
       return {
         title: "Hello"
@@ -818,7 +1126,7 @@ if (uni.restoreGlobal) {
     },
     methods: {}
   };
-  function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
+  function _sfc_render$2(_ctx, _cache, $props, $setup, $data, $options) {
     return vue.openBlock(), vue.createElementBlock("view", { class: "content" }, [
       vue.createElementVNode("image", {
         class: "logo",
@@ -829,21 +1137,31 @@ if (uni.restoreGlobal) {
       ])
     ]);
   }
-  const PagesIndexIndex = /* @__PURE__ */ _export_sfc(_sfc_main$1, [["render", _sfc_render], ["__file", "D:/DeskTops/uniapp/jimu/pages/index/index.vue"]]);
+  const PagesIndexIndex = /* @__PURE__ */ _export_sfc(_sfc_main$2, [["render", _sfc_render$2], ["__file", "D:/DeskTops/uniapp/jimu/pages/index/index.vue"]]);
+  const _sfc_main$1 = {};
+  function _sfc_render$1(_ctx, _cache) {
+    return null;
+  }
+  const PagesMyIndex = /* @__PURE__ */ _export_sfc(_sfc_main$1, [["render", _sfc_render$1], ["__file", "D:/DeskTops/uniapp/jimu/pages/my/index.vue"]]);
+  __definePage("pages/homePage/index", PagesHomePageIndex);
   __definePage("pages/login/index", PagesLoginIndex);
   __definePage("pages/index/index", PagesIndexIndex);
+  __definePage("pages/my/index", PagesMyIndex);
   const _sfc_main = {
     onLaunch: function() {
-      formatAppLog("log", "at App.vue:4", "App Launch");
+      formatAppLog("log", "at App.vue:9", "App Launch");
     },
     onShow: function() {
-      formatAppLog("log", "at App.vue:7", "App Show");
+      formatAppLog("log", "at App.vue:12", "App Show");
     },
     onHide: function() {
-      formatAppLog("log", "at App.vue:10", "App Hide");
+      formatAppLog("log", "at App.vue:15", "App Hide");
     }
   };
-  const App = /* @__PURE__ */ _export_sfc(_sfc_main, [["__file", "D:/DeskTops/uniapp/jimu/App.vue"]]);
+  function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
+    return vue.openBlock(), vue.createElementBlock("div", null, " 444488 ");
+  }
+  const App = /* @__PURE__ */ _export_sfc(_sfc_main, [["render", _sfc_render], ["__file", "D:/DeskTops/uniapp/jimu/App.vue"]]);
   function createApp() {
     const app = vue.createVueApp(App);
     return {

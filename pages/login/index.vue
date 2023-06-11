@@ -25,6 +25,7 @@
 		</div>
 	   <register v-else @close="show = 1"></register>
 	</div>
+	<fui-toast ref="toast"></fui-toast>
 </template>
 
 <script setup>
@@ -34,16 +35,48 @@
 		ref
 	} from "vue";
 	let show = ref(1)
+	let toast = ref(null)
 	const form = reactive({
 		accountNumber: '',
 		passwrod: ''
 	})
 	function onLogin(){
-		if(!form.accountNumber && !form.passwrod){
-			return 
+		return
+		if(form.accountNumber && form.passwrod){
+			if(form.accountNumber == ''){
+				showToast(2)
+				return 
+				if(form.passwrod == ''){
+					showToast(3)
+					return
+				}
+			}
+		  if(form.accountNumber == 'yunibobo'&&form.passwrod == 'mi') showToast(200) ;uni.switchTab({url:"../homePage/index"})
+		}else{
+			showToast(1)
 		}
-		
 	}
+	function showToast (type) {
+			let options = {}
+			//提示信息
+			switch(type){
+				case 1:options.text = '请填写用户名和密码'
+				break
+				case 2:options.text = '请填写用户名'
+				break
+				case 3:options.text = '请填写密码'
+				break
+				case 4:options.text = '用户名不存在'
+				break
+				case 5:options.text = '密码错误'
+				break
+				case 6:options.text = '密码或者用户名错误'
+				break
+				case 200:options.text = '登录成功'
+				break
+			}
+			toast.value.show(options)
+		}
 </script>
 
 <style lang="less" scoped>

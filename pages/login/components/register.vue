@@ -2,7 +2,7 @@
 	<div class="forms">
 		<div class="title">注册</div>
 		<div class="box">
-			<fui-input placeholder="用户名" backgroundColor='#ffffff00' v-model="form.userName">
+			<fui-input placeholder="用户名" backgroundColor='#ffffff00' v-model="form.username">
 				<template #left>
 					<image class="icon" src="../../../static/svg/login_user.svg" mode=""></image>
 				</template>
@@ -23,9 +23,16 @@
 			</fui-input>
 		</div>
 		<div class="box">
-			<fui-input placeholder="请输入手机账号" backgroundColor='#ffffff00' v-model="form.userPhone">
+			<fui-input placeholder="请输入邮箱" backgroundColor='#ffffff00' v-model="form.email">
 				<template #left>
-					<image class="icon" src="../../../static/svg/login_phone.svg" mode=""></image>
+					<image class="icon" src="../../../static/svg/login_meail.svg" mode=""></image>
+				</template>
+			</fui-input>
+		</div>
+		<div class="box">
+			<fui-input placeholder="请输入年龄" backgroundColor='#ffffff00' v-model="form.age">
+				<template #left>
+					<image class="icon" src="../../../static/svg/login_age.svg" mode=""></image>
 				</template>
 			</fui-input>
 		</div>
@@ -39,23 +46,28 @@
 </template>
 
 <script setup>
+	import {userRegister} from '../../../api/user.js'
 	import {
 		reactive
 	} from "vue";
 	let $emit = defineEmits(['close'])
 	let form = reactive({
-		userName: '',
-		userPhone: '',
+		username: '',
+		email: '',
 		passWord: '',
 		passWordTwo: ''
 	})
 
 	function onRegister() {
+		onRegister(form).then(res=>{
+			console.log(res,'res')
+		})
 		for (let key in form) {
 			if (!form[key]) {
 				return
 			}
 		}
+		
 		console.log('ddd')
 	}
 </script>
