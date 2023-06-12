@@ -1,0 +1,9 @@
+{
+  "navigationBarTitleText": "登录",
+  "usingComponents": {
+    "fui-input": "../../node-modules/firstui-uni/firstui/fui-input/fui-input",
+    "fui-button": "../../node-modules/firstui-uni/firstui/fui-button/fui-button",
+    "fui-toast": "../../node-modules/firstui-uni/firstui/fui-toast/fui-toast",
+    "register": "./components/register"
+  }
+}

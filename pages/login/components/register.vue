@@ -9,14 +9,14 @@
 			</fui-input>
 		</div>
 		<div class="box">
-			<fui-input placeholder="请输入您的密码" backgroundColor='#ffffff00' v-model="form.passWord">
+			<fui-input placeholder="请输入您的密码" backgroundColor='#ffffff00' :password="true" v-model="form.passWord">
 				<template #left>
 					<image class="icon" src="../../../static/svg/login_password.svg" mode=""></image>
 				</template>
 			</fui-input>
 		</div>
 		<div class="box">
-			<fui-input placeholder="请再次输入密码" backgroundColor='#ffffff00' v-model="form.passWordTwo">
+			<fui-input placeholder="请再次输入密码" :password="true" backgroundColor='#ffffff00' v-model="form.passWordTwo">
 				<template #left>
 					<image class="icon" src="../../../static/svg/login_password.svg" mode=""></image>
 				</template>
@@ -47,6 +47,7 @@
 
 <script setup>
 	import {userRegister} from '../../../api/user.js'
+	import {toast} from '../../../utils/tool.js'
 	import {
 		reactive
 	} from "vue";
@@ -55,19 +56,30 @@
 		username: '',
 		email: '',
 		passWord: '',
-		passWordTwo: ''
+		passWordTwo: '',
+		age:null
 	})
-
+    const $toast = new toast()
 	function onRegister() {
-		onRegister(form).then(res=>{
-			console.log(res,'res')
-		})
+		if(form.passWordTwo != form.passWord){
+		  $toast.text('两次密码不一致！')
+		  return
+		}
 		for (let key in form) {
 			if (!form[key]) {
+				uni.showToast({
+					title:'请填写个人信息！',
+					icon:'none',
+					duration:2000
+				})
 				return
 			}
 		}
-		
+		userRegister(form).then(res=>{
+			$toast.success(res.mag)
+			console.log(res,'res')
+			$emit('close')
+		})
 		console.log('ddd')
 	}
 </script>
@@ -76,13 +88,13 @@
 	.forms {
 		width: 600rpx;
 		background-color: #fff;
-		height: 900rpx;
+		// height: 900rpx;
 		border-radius: 10px;
 		padding: 20px;
 		position: fixed;
 		top: 150px;
 		left: calc(50% - 170px);
-
+        
 		.title {
 			font-size: 20px;
 			font-weight: 700;

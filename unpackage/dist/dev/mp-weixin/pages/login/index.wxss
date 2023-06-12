@@ -1,0 +1,39 @@
+.login.data-v-4586967a {
+  width: 100vw;
+  height: 130vh;
+  background-image: url('../../static/login.jpeg');
+  background-size: 100% ;
+}
+.login .form.data-v-4586967a {
+  width: 330px;
+  background-color: #fff;
+  border-radius: 10px;
+  padding: 20px;
+  position: fixed;
+  top: 150px;
+  left: calc(50% - 170px);
+}
+.login .form .title.data-v-4586967a {
+  font-size: 20px;
+  font-weight: 700;
+  text-align: center;
+}
+.login .form .box.data-v-4586967a {
+  padding: 10px 0;
+}
+.login .form .icon.data-v-4586967a {
+  width: 20px;
+  height: 20px;
+  fill: currentColor;
+  color: #1890FF;
+  margin: 0 10px;
+}
+.login .form .btn.data-v-4586967a {
+  margin-top: 20px;
+}
+.login .form .bottom.data-v-4586967a {
+  display: flex;
+  justify-content: space-between;
+  color: #d583f7b0;
+  padding-top: 40rpx;
+}
