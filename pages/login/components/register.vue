@@ -30,6 +30,16 @@
 			</fui-input>
 		</div>
 		<div class="box">
+			<fui-input placeholder="验证码" backgroundColor='#ffffff00' v-model="form.email">
+				<template #left>
+					<fui-icon  name="captcha"></fui-icon>
+				</template>
+				<template #default>
+					<fui-button @click="getCode" size="12" height="30px" width="80px" type="success" >获取验证码</fui-button>
+				</template> 
+			</fui-input>
+		</div>
+		<div class="box">
 			<fui-input placeholder="请输入年龄" backgroundColor='#ffffff00' v-model="form.age">
 				<template #left>
 					<image class="icon" src="../../../static/svg/login_age.svg" mode=""></image>
@@ -46,7 +56,7 @@
 </template>
 
 <script setup>
-	import {userRegister} from '../../../api/user.js'
+	import {userRegister,sendCode} from '../../../api/user.js'
 	import {toast} from '../../../utils/tool.js'
 	import {
 		reactive
@@ -81,6 +91,11 @@
 			$emit('close')
 		})
 		console.log('ddd')
+	}
+	function getCode(){
+		sendCode().then(res=>{
+			console.log((res))
+		})
 	}
 </script>
 
