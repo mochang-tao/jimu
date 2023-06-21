@@ -30,12 +30,12 @@
 			</fui-input>
 		</div>
 		<div class="box">
-			<fui-input placeholder="验证码" backgroundColor='#ffffff00' v-model="form.email">
+			<fui-input placeholder="验证码" backgroundColor='#ffffff00' v-model="form.code">
 				<template #left>
-					<fui-icon  name="captcha"></fui-icon>
+					<image class="icon" src="../../../static/svg/login_code.svg" mode=""></image>
 				</template>
 				<template #default>
-					<fui-button @click="getCode" size="12" height="30px" width="80px" type="success" >获取验证码</fui-button>
+					<fui-button @click="getCode" size="12"  background="#a05dbc91"  height="30px" width="80px" type="success" >获取验证码</fui-button>
 				</template> 
 			</fui-input>
 		</div>
@@ -67,7 +67,8 @@
 		email: '',
 		passWord: '',
 		passWordTwo: '',
-		age:null
+		age:null,
+		code:''
 	})
     const $toast = new toast()
 	function onRegister() {
@@ -93,8 +94,12 @@
 		console.log('ddd')
 	}
 	function getCode(){
-		sendCode().then(res=>{
-			console.log((res))
+		if(!form.email){
+			$toast.text('请输入邮箱')
+			return
+		}
+		sendCode({email:form.email}).then(res=>{
+			$toast.success(res.mag)
 		})
 	}
 </script>

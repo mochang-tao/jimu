@@ -1,8 +1,9 @@
 // 全局请求封装
 // const base_url = 'http://192.168.65.1:7001/'
  // const base_url ='http://169.254.15.104:7001/'
- const base_url ='http://127.0.0.1:3000/'
+ // const base_url ='http://127.0.0.1:'+ location.port +'/'
  
+ const base_url = location.host + '/'
  
 // 需要修改token，和根据实际修改请求头
 export default (url, method, params) => {
@@ -21,7 +22,7 @@ export default (url, method, params) => {
 	}
 	return new Promise((resolve, reject) => {
 		uni.request({
-			url: base_url + url,
+			url: url,
 			method: method,
 			header: header,
 			dataType:'jsonp',
